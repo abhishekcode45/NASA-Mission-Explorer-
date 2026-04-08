@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Mission Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Modern Space Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="header-top">
+                <h1 class="glow-text">NASA Mission Explorer</h1>
+                <!-- Theme Toggle -->
+                <div class="theme-toggle" id="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                    <span class="icon">☀️</span>
+                </div>
+            </div>
+            <p class="subtitle">Astronomy Picture of the Day</p>
+        </header>
+
+        <section class="controls glass-panel">
+            <div class="control-group">
+                <label for="date-picker">Select Date:</label>
+                <input type="date" id="date-picker" max="">
+            </div>
+            <div class="control-group toggle-group">
+                <span class="toggle-label">Standard</span>
+                <label class="switch">
+                    <input type="checkbox" id="hd-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label highlight">HD Image</span>
+            </div>
+        </section>
+
+        <main class="content-display glass-panel">
+            <!-- Loading Indicator -->
+            <div id="loading" class="loading-container hidden">
+                <div class="spinner"></div>
+                <p>Fetching from the universe...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-container hidden">
+                <p id="error-text">Failed to load data.</p>
+            </div>
+
+            <!-- APOD Content -->
+            <div id="apod-content" class="apod-container hidden">
+                <div class="media-container" id="media-container">
+                    <!-- Image or Iframe will be injected here dynamically -->
+                </div>
+                <div class="info-container">
+                    <h2 id="apod-title">Title</h2>
+                    <span class="date-badge" id="apod-date">YYYY-MM-DD</span>
+                    <p class="copyright" id="apod-copyright"></p>
+                    <p id="apod-explanation" class="explanation">Explanation...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section glass-panel" id="gallery-view">
+            <div class="gallery-header">
+                <h2>Mission Archives</h2>
+                <div class="gallery-controls">
+                    <input type="text" id="search-input" placeholder="Search title or description..." />
+                    
+                    <select id="filter-select">
+                        <option value="all">All Media</option>
+                        <option value="image">Images Only</option>
+                        <option value="video">Videos Only</option>
+                        <option value="favorites">Favorites ⭐</option>
+                    </select>
+                    
+                    <select id="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="alpha-asc">Title (A-Z)</option>
+                        <option value="alpha-desc">Title (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="gallery-loading" class="loading-container hidden">
+                <div class="spinner"></div>
+                <p>Loading historical archives...</p>
+            </div>
+            
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- JS will generate cards here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Full Screen Image Modal -->
+    <div id="image-modal" class="modal hidden">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image" src="" alt="Full Screen APOD">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
